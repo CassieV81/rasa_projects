@@ -1,1 +1,4 @@
 /venv_rasa
+/models
+/tests
+/.rasa
