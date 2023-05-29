@@ -65,12 +65,20 @@ stories:
   - intent: ask_for_game
   - action: utter_affirm_game
   - action: utter_play_RPS
+  - intent: play_game
+  - action: action_play_RPS
+  - slot_was_set:
+    - choices: "rock" 
 
 - story: accept game play
   steps:
   - action: utter_ask_play_game
   - intent: affirm
   - action: utter_play_RPS
+  - intent: play_game
+  - action: action_play_RPS
+  - slot_was_set:
+    - choices: "rock" 
 
 - story: deny game play
   steps:

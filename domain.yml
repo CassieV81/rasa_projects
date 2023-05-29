@@ -20,11 +20,7 @@ slots:
       - type: from_entity
         entity: location
   choices:
-    type: categorical
-    values:
-      - rock
-      - paper
-      - scissors
+    type: text
     mappings:
       - type: from_entity
         entity: choice

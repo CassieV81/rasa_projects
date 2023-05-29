@@ -12,7 +12,8 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 import requests
-
+import random
+from string import capwords
 
 class ActionCheckWeather(Action):
 
@@ -36,3 +37,34 @@ class ActionCheckWeather(Action):
         dispatcher.utter_message(text=f"The weather in {location} is {weather_C}°C")
 
         return []
+    
+class ActionPlayRPS(Action):
+
+    def name(self) -> Text:
+        return "action_play_RPS"
+    
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        player = capwords(tracker.get_slot("choices"))
+        bot = capwords(random.choice(['rock', 'paper', 'scissors']))
+
+        if player == bot:
+            dispatcher.utter_message(text=f"You chose {player} and I chose {bot}. It's a Tie!")
+        elif player == 'Rock':
+            if bot == 'Scissors':
+                dispatcher.utter_message(text=f"You chose {player} and I chose {bot}. {player} crushes {bot}, You Win!")
+            else:
+                dispatcher.utter_message(text=f"You chose {player} and I chose {bot}. {bot} cover {player}, You Lose!")
+        elif player == 'Scissors':
+            if bot == 'Paper':
+                dispatcher.utter_message(text=f"You chose {player} and I chose {bot}. {player} cuts {bot}, You Win!")
+            else:
+                dispatcher.utter_message(text=f"You chose {player} and I chose {bot}. {bot} crushes {player}, You Lose!")
+        elif player == 'Paper':
+            if bot == 'Rock':
+                dispatcher.utter_message(text=f"You chose {player} and I chose {bot}. {player} covers {bot}, You Win!")
+            else:
+                dispatcher.utter_message(text=f"You chose {player} and I chose {bot}. {bot} cuts {player}, You Lose!")
+
+        return[]
