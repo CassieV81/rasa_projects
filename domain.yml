@@ -10,6 +10,8 @@ intents:
   - bot_challenge
   - check_weather
   - inform
+  - ask_for_game
+  - play_game
 
 slots:
   location:
@@ -17,6 +19,15 @@ slots:
     mappings:
       - type: from_entity
         entity: location
+  choices:
+    type: categorical
+    values:
+      - rock
+      - paper
+      - scissors
+    mappings:
+      - type: from_entity
+        entity: choice
 
 responses:
   utter_greet:
@@ -48,11 +59,22 @@ responses:
   utter_anything_else:
   - text: "Do you need anything else?"
 
+  utter_ask_play_game:
+  - text: "Do you want to play a game?"
+
+  utter_affirm_game:
+  - text: "Yes we can play a game"
+
+  utter_play_RPS:
+  - text: "Let's play Rock, Paper, Scissors. Choose one:" 
+
 entities:
   - location
+  - choice
 
 actions:
 - action_check_weather
+- action_play_RPS
 
 session_config:
   session_expiration_time: 60

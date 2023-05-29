@@ -26,9 +26,9 @@ pipeline:
     epochs: 100
     constrain_similarities: true
   - name: EntitySynonymMapper
-  - name: DucklingEntityExtractor
-    url: http://localhost:8000
-    dimensions: ["location"]
+  # - name: DucklingEntityExtractor
+  #   url: http://localhost:8000
+  #   dimensions: ["location"]
   - name: ResponseSelector
     epochs: 100
     constrain_similarities: true

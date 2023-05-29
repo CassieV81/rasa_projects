@@ -27,7 +27,15 @@ stories:
   - action: utter_cheer_up
   - action: utter_did_that_help
   - intent: deny
-  - action: utter_goodbye
+  - action: utter_ask_play_game
+
+- story: sad path 3
+  steps:
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_ask_play_game
 
 - story: ask weather path, user provides location
   steps:
@@ -51,3 +59,21 @@ stories:
   - slot_was_set:
     - location: "Nigeria"
   - action: utter_anything_else
+
+- story: play game
+  steps:
+  - intent: ask_for_game
+  - action: utter_affirm_game
+  - action: utter_play_RPS
+
+- story: accept game play
+  steps:
+  - action: utter_ask_play_game
+  - intent: affirm
+  - action: utter_play_RPS
+
+- story: deny game play
+  steps:
+  - action: utter_ask_play_game
+  - intent: deny
+  - action: utter_goodbye

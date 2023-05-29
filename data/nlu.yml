@@ -39,6 +39,7 @@ nlu:
     - of course
     - that sounds good
     - correct
+    - sure
 
 - intent: deny
   examples: |
@@ -107,6 +108,22 @@ nlu:
     - I am in [Paris](location)
     - How about [London](location)?
     - Check [Tokyo](location)
+
+- intent: ask_for_game
+  examples: |
+    - do you have any game?
+    - any game?
+    - do you want to play?
+    - play game
+    - lets play a game
+    - game
+
+- intent: play_game
+  examples: |
+    - [rock](choice)
+    - [paper](choice)
+    - [scissors](choice)
+
 
 
 # - lookup: location
