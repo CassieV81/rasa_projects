@@ -99,6 +99,9 @@ nlu:
   examples: |
     - how is the weather in [Lagos](location) today
     - what temperature is it in [Florida](location) today
+    - I want to check the tempereture in [Berlin](location)
+    - i want to check the weather
+    - how's the weather
 
 - intent: inform
   examples: |

@@ -1,4 +1,21 @@
-/venv_rasa/
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Virtual environments
+venv/
+
+# Rasa
 /models/
-/tests/
-/.rasa/cache/
+/.rasa/
+
+# IDEs and editors
+*.code-workspace
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db

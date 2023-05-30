@@ -24,18 +24,26 @@ class ActionCheckWeather(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
-        location = tracker.get_slot("location")
-        response = requests.get(f"https://api.openweathermap.org/data/2.5/weather?q={location}&appid=67cb3adbca2571ac10da532e66620b73")
-        
-        weather = response.json()["main"]["temp"]
+        # I realise it might not have been necessary to try catch invalid inputs
+        # since the bot will select valid inputs through entities selection
+        try:
+            location = tracker.get_slot("location")
+            
+            response = requests.get(f"https://api.openweathermap.org/data/2.5/weather?q={location}&appid=67cb3adbca2571ac10da532e66620b73")
 
-        def convert_K_to_C(num):
-             return int(num - 273.15)
-        
-        weather_C = convert_K_to_C(weather)
+            response.raise_for_status()
+            
+            weather = response.json()["main"]["temp"]
 
-        dispatcher.utter_message(text=f"The weather in {location} is {weather_C}°C")
+            def convert_K_to_C(num):
+                return int(num - 273.15)
+            
+            weather_C = convert_K_to_C(weather)
 
+            dispatcher.utter_message(text=f"The weather in {location} is {weather_C}°C")
+        except requests.exceptions.RequestException:
+            dispatcher.utter_message(text="Your input is invalid")
+            
         return []
     
 class ActionPlayRPS(Action):
