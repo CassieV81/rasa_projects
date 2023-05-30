@@ -1,6 +1,0 @@
-[
-  {
-    "name": "location",
-    "pattern": "(\\bTokyo\\b|\\bDelhi\\b|\\bShanghai\\b|\\bBeijing\\b|\\bOsaka\\b|\\bCairo\\b|\\bNew\\ York\\b|\\bMoscow\\b|\\bBangkok\\b|\\bChennai\\b|\\bLos\\ Angeles\\b|\\bKinshasa\\b|\\bLima\\b|\\bGermany\\b|\\bFrance\\b|\\bNigeria\\b|\\bIndia\\b|\\bGhana\\b|\\bPoland\\b)"
-  }
-]
