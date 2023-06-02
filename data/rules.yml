@@ -14,7 +14,7 @@ rules:
 
 - rule: utter_affirm anytime user says thanks
   steps:
-  - user: "thanks" 
+  - intent: thanks
   - action: utter_affirm
   - action: utter_anything_else
 
