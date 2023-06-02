@@ -40,6 +40,13 @@ nlu:
     - that sounds good
     - correct
     - sure
+  
+- intent: thanks
+  examples: |
+    - thanks
+    - thank you
+    - tnx
+    - tyS
 
 - intent: deny
   examples: |

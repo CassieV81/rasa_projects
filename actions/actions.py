@@ -24,19 +24,18 @@ class ActionCheckWeather(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
+        location = tracker.get_slot("location")
+        
+        def convert_K_to_C(num):
+            return int(num - 273.15)
         # I realise it might not have been necessary to try catch invalid inputs
         # since the bot will select valid inputs through entities selection
         try:
-            location = tracker.get_slot("location")
-            
             response = requests.get(f"https://api.openweathermap.org/data/2.5/weather?q={location}&appid=67cb3adbca2571ac10da532e66620b73")
 
             response.raise_for_status()
             
             weather = response.json()["main"]["temp"]
-
-            def convert_K_to_C(num):
-                return int(num - 273.15)
             
             weather_C = convert_K_to_C(weather)
 
